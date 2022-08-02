@@ -5,6 +5,7 @@ import {
   createNativeStackNavigator,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
+import SplashScreen from 'react-native-splash-screen';
 
 type RootStackParamList = {
   Home: undefined;
@@ -45,6 +46,9 @@ function DetailsScreen({
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  React.useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <NavigationContainer>
       <Stack.Navigator
