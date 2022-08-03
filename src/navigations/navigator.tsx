@@ -1,8 +1,7 @@
 import React from 'react';
-import lounge from '../screens/lounge';
-import detail from '../screens/detail';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {routes} from './routes';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -14,8 +13,13 @@ function Navigator() {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="lounge" component={lounge} />
-        <Stack.Screen name="detail" component={detail} />
+        {routes.map((screen, index) => (
+          <Stack.Screen
+            key={index}
+            name={screen.name}
+            component={screen.component}
+          />
+        ))}
       </Stack.Navigator>
     </NavigationContainer>
   );
