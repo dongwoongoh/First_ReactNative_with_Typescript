@@ -8,7 +8,10 @@ function Lounge({
   return (
     <SafeAreaView>
       <Pressable onPress={() => navigation.navigate('detail')}>
-        <Text>Home Screen</Text>
+        <Text>detail</Text>
+      </Pressable>
+      <Pressable onPress={() => navigation.navigate('my')}>
+        <Text>my</Text>
       </Pressable>
     </SafeAreaView>
   );

@@ -1,10 +1,8 @@
 import React from 'react';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Pressable, SafeAreaView, Text} from 'react-native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-function Detail({
-  navigation,
-}: NativeStackScreenProps<RootStackParamList, 'detail'>) {
+function My({navigation}: NativeStackScreenProps<RootStackParamList, 'my'>) {
   return (
     <SafeAreaView>
       <Pressable onPress={() => navigation.navigate('lounge')}>
@@ -14,4 +12,4 @@ function Detail({
   );
 }
 
-export default Detail;
+export default My;
