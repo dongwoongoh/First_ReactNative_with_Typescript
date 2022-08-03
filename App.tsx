@@ -5,7 +5,7 @@ import SplashScreen from 'react-native-splash-screen';
 import detail from './src/screens/detail';
 import lounge from './src/screens/lounge';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   React.useEffect(() => {
@@ -14,10 +14,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Lounge"
+        initialRouteName="lounge"
         screenOptions={{
-          headerStyle: {backgroundColor: '#ff9900'},
-          headerTitleStyle: {color: '#ffff'},
+          headerShown: false,
         }}>
         <Stack.Screen name="lounge" component={lounge} />
         <Stack.Screen name="detail" component={detail} />
