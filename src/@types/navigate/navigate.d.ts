@@ -1,10 +1,15 @@
-type isLoggedInNavigateStackParamList = {
+type IsLoggedInNavigateStackParamList = {
   readonly lounge: undefined;
   readonly rooms: undefined;
   readonly profile: undefined;
 };
 
-type isLoggedOutNavigateStackParamList = {
+type IsLoggedOutNavigateStackParamList = {
   readonly signIn: undefined;
   readonly signUp: undefined;
+};
+
+type SignUpTopTabStackParamList = {
+  readonly firstFields: undefined;
+  readonly secondFields: undefined;
 };

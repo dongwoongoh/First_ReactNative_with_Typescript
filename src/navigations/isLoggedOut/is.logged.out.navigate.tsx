@@ -5,7 +5,7 @@ import signIn from '../../screens/isLoggedOut/user/sign/signIn/sign.in';
 import signUp from '../../screens/isLoggedOut/user/sign/signUp/sign.up';
 
 const LoggedOutStack =
-  createNativeStackNavigator<isLoggedOutNavigateStackParamList>();
+  createNativeStackNavigator<IsLoggedOutNavigateStackParamList>();
 
 function IsLoggedOutNavigate() {
   return (

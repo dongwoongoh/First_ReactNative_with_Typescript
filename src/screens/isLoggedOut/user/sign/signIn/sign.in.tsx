@@ -8,13 +8,16 @@ import {
 } from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
 import ErrorMessage from '../../../../../components/form/message/error.message';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 type LoginType = UserType & {
   readonly password: string;
   readonly confirmPassword: string;
 };
 
-function SignIn() {
+function SignIn({
+  navigation,
+}: NativeStackScreenProps<IsLoggedOutNavigateStackParamList, 'signIn'>) {
   const {
     control,
     handleSubmit,
@@ -67,6 +70,12 @@ function SignIn() {
       <Pressable style={styles.submit} onPress={handleSubmit(onLoginSubmit)}>
         <Text style={styles.submit_value}>Login</Text>
       </Pressable>
+
+      <Pressable
+        style={styles.go_sign_up}
+        onPress={() => navigation.navigate('signUp')}>
+        <Text style={styles.go_sign_up_text}>Sign up</Text>
+      </Pressable>
     </SafeAreaView>
   );
 }
@@ -91,6 +100,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  go_sign_up: {
+    alignItems: 'center',
+  },
+  go_sign_up_text: {
+    fontWeight: 'bold',
+    fontSize: 12,
+    textDecorationLine: 'underline',
   },
 });
 

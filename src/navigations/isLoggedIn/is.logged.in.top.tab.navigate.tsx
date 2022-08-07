@@ -6,7 +6,7 @@ import profile from '../../screens/isLoggedIn/profile/profile';
 import {NavigationContainer} from '@react-navigation/native';
 import TopTabBar from '../../components/isLoggedIn/topTabBar/top.tab.bar';
 
-const Top = createMaterialTopTabNavigator<isLoggedInNavigateStackParamList>();
+const Top = createMaterialTopTabNavigator<IsLoggedInNavigateStackParamList>();
 
 function IsLoggedInTopTabNavigate() {
   return (
