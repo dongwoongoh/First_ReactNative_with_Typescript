@@ -1,14 +1,14 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import lounge from '../screens/lounge/lounge';
-import rooms from '../screens/rooms/rooms';
-import profile from '../screens/profile/profile';
+import lounge from '../screens/isLoggedIn/lounge/lounge';
+import rooms from '../screens/isLoggedIn/rooms/rooms';
+import profile from '../screens/isLoggedIn/profile/profile';
 import {NavigationContainer} from '@react-navigation/native';
 import TopTabBar from '../components/topTabBar/top.tab.bar';
 
 const Bottom = createMaterialTopTabNavigator<RootNavigateStackParamList>();
 
-function BottomTabNavigate() {
+function TopTabNavigate() {
   return (
     <NavigationContainer>
       <Bottom.Navigator
@@ -22,4 +22,4 @@ function BottomTabNavigate() {
   );
 }
 
-export default BottomTabNavigate;
+export default TopTabNavigate;
