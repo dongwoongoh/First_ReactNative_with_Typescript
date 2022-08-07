@@ -14,7 +14,7 @@ type LoginType = UserType & {
   readonly confirmPassword: string;
 };
 
-function Login() {
+function SignIn() {
   const {
     control,
     handleSubmit,
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default SignIn;
