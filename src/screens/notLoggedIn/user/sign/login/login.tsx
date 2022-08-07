@@ -1,6 +1,13 @@
 import React from 'react';
-import {Pressable, SafeAreaView, Text, TextInput} from 'react-native';
+import {
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+} from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
+import ErrorMessage from '../../../../../components/form/message/error.message';
 
 type LoginType = UserType & {
   readonly password: string;
@@ -18,40 +25,68 @@ function Login() {
   const onLoginSubmit = () => {};
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Controller
         control={control}
         rules={{
-          required: true,
+          required: 'Email is required',
         }}
         render={({field: {onChange, onBlur, value}}) => (
-          <TextInput onBlur={onBlur} onChangeText={onChange} />
+          <TextInput
+            onBlur={onBlur}
+            onChangeText={onChange}
+            placeholder="email"
+            style={styles.input}
+          />
         )}
         name="email"
       />
-      {errors.email && <Text>This is required.</Text>}
+      {errors.email && errors.email.message && (
+        <ErrorMessage message={errors.email.message} />
+      )}
 
       <Controller
         control={control}
         rules={{
-          maxLength: 100,
+          required: 'Password is required',
         }}
         render={({field: {onChange, onBlur, value}}) => (
-          <TextInput onBlur={onBlur} onChangeText={onChange} />
+          <TextInput
+            onBlur={onBlur}
+            onChangeText={onChange}
+            placeholder="password"
+            style={styles.input}
+            secureTextEntry={true}
+          />
         )}
         name="password"
       />
+      {errors.password && errors.password.message && (
+        <ErrorMessage message={errors.password.message} />
+      )}
 
       <Controller
         control={control}
         rules={{
-          maxLength: 100,
+          required: 'Confirm password is required',
+          validate: {
+            value: value => watch('password') === value || 'No match password',
+          },
         }}
         render={({field: {onChange, onBlur, value}}) => (
-          <TextInput onBlur={onBlur} onChangeText={onChange} />
+          <TextInput
+            onBlur={onBlur}
+            onChangeText={onChange}
+            placeholder="confirmPassword"
+            style={styles.input}
+            secureTextEntry={true}
+          />
         )}
         name="confirmPassword"
       />
+      {errors.confirmPassword && errors.confirmPassword.message && (
+        <ErrorMessage message={errors.confirmPassword.message} />
+      )}
 
       <Controller
         control={control}
@@ -59,16 +94,47 @@ function Login() {
           maxLength: 100,
         }}
         render={({field: {onChange, onBlur, value}}) => (
-          <TextInput onBlur={onBlur} onChangeText={onChange} />
+          <TextInput
+            onBlur={onBlur}
+            onChangeText={onChange}
+            placeholder="nickname"
+            style={styles.input}
+          />
         )}
         name="nickname"
       />
+      {errors.nickname && errors.nickname.message && (
+        <ErrorMessage message={errors.nickname.message} />
+      )}
 
-      <Pressable onPress={handleSubmit(onLoginSubmit)}>
-        <Text>Login</Text>
+      <Pressable style={styles.submit} onPress={handleSubmit(onLoginSubmit)}>
+        <Text style={styles.submit_value}>Login</Text>
       </Pressable>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {},
+  input: {
+    borderStyle: 'solid',
+    borderColor: 'black',
+    borderWidth: 1,
+    margin: 12,
+    padding: 12,
+    borderRadius: 8,
+  },
+  submit: {
+    backgroundColor: 'blue',
+    borderRadius: 8,
+    margin: 12,
+    padding: 12,
+  },
+  submit_value: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
 
 export default Login;
