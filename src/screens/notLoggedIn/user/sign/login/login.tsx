@@ -65,48 +65,6 @@ function Login() {
         <ErrorMessage message={errors.password.message} />
       )}
 
-      <Controller
-        control={control}
-        rules={{
-          required: 'Confirm password is required',
-          validate: {
-            value: value => watch('password') === value || 'No match password',
-          },
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            onBlur={onBlur}
-            onChangeText={onChange}
-            placeholder="confirmPassword"
-            style={styles.input}
-            secureTextEntry={true}
-          />
-        )}
-        name="confirmPassword"
-      />
-      {errors.confirmPassword && errors.confirmPassword.message && (
-        <ErrorMessage message={errors.confirmPassword.message} />
-      )}
-
-      <Controller
-        control={control}
-        rules={{
-          maxLength: 100,
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            onBlur={onBlur}
-            onChangeText={onChange}
-            placeholder="nickname"
-            style={styles.input}
-          />
-        )}
-        name="nickname"
-      />
-      {errors.nickname && errors.nickname.message && (
-        <ErrorMessage message={errors.nickname.message} />
-      )}
-
       <Pressable style={styles.submit} onPress={handleSubmit(onLoginSubmit)}>
         <Text style={styles.submit_value}>Login</Text>
       </Pressable>
