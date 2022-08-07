@@ -17,7 +17,6 @@ type LoginType = UserType & {
 function Login() {
   const {
     control,
-    watch,
     handleSubmit,
     formState: {errors},
   } = useForm<LoginType>({mode: 'onChange'});
