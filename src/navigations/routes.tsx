@@ -1,16 +1,25 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import lounge from '../screens/lounge/lounge';
+import friends from '../screens/friends/friends';
+import rooms from '../screens/rooms/rooms';
+import profile from '../screens/profile/profile';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import MainTopTabBar from '../components/topTabBar/main.top.tab.bar';
 
 const RoutesNavigateStack =
-  createNativeStackNavigator<RootNavigateParamListType>();
+  createMaterialTopTabNavigator<RootNavigateParamListType>();
 
 function Routes() {
   return (
     <NavigationContainer>
-      <RoutesNavigateStack.Navigator initialRouteName="lounge">
+      <RoutesNavigateStack.Navigator
+        initialRouteName="lounge"
+        tabBar={props => <MainTopTabBar {...props} />}>
         <RoutesNavigateStack.Screen name="lounge" component={lounge} />
+        <RoutesNavigateStack.Screen name="friends" component={friends} />
+        <RoutesNavigateStack.Screen name="rooms" component={rooms} />
+        <RoutesNavigateStack.Screen name="profile" component={profile} />
       </RoutesNavigateStack.Navigator>
     </NavigationContainer>
   );
