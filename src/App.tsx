@@ -1,12 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-
+import SplashScreen from 'react-native-splash-screen';
+import Routes from './navigations/routes';
 function App() {
-  return (
-    <View>
-      <Text>Reset</Text>
-    </View>
-  );
+  React.useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+  return <Routes />;
 }
 
 export default App;
