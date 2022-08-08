@@ -18,16 +18,18 @@ function Routes() {
       <RoutesNavigateStack.Navigator
         initialRouteName="lounge"
         tabBar={props => <MainTopTabBar {...props} />}>
-        <RoutesNavigateStack.Screen name="lounge" component={lounge} />
-        <RoutesNavigateStack.Screen name="friends" component={friends} />
-        <RoutesNavigateStack.Screen name="rooms" component={rooms} />
-        <RoutesNavigateStack.Screen name="profile" component={profile} />
-      </RoutesNavigateStack.Navigator>
+        <RoutesNavigateStack.Group>
+          <RoutesNavigateStack.Screen name="lounge" component={lounge} />
+          <RoutesNavigateStack.Screen name="friends" component={friends} />
+          <RoutesNavigateStack.Screen name="rooms" component={rooms} />
+          <RoutesNavigateStack.Screen name="profile" component={profile} />
+        </RoutesNavigateStack.Group>
 
-      <RoutesNavigateStack.Group>
-        <RoutesNavigateStack.Screen name="signIn" component={signIn} />
-        <RoutesNavigateStack.Screen name="signUp" component={signUp} />
-      </RoutesNavigateStack.Group>
+        <RoutesNavigateStack.Group>
+          <RoutesNavigateStack.Screen name="signIn" component={signIn} />
+          <RoutesNavigateStack.Screen name="signUp" component={signUp} />
+        </RoutesNavigateStack.Group>
+      </RoutesNavigateStack.Navigator>
     </NavigationContainer>
   );
 }
