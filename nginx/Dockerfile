@@ -1,13 +1,19 @@
 FROM ubuntu:20.04
 
-LABEL maintainer="m24te28"
+ENV DEBIAN_FRONTEND=noninteractive
+WORKDIR /var/www/html
 
-RUN apt-get update && \
-    apt-get install -y curl nginx
+LABEL maintainer="mad"
+LABEL version="0.1"
+LABEL ubuntu="20.04"
+LABEL nginx="latest"
 
-WORKDIR /usr/share/nginx/html
+RUN apt-get update \
+    && apt-get install -y nginx \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+ADD index.html /var/www/html/index.html
 
-ADD index.html /usr/share/nginx/html
+EXPOSE 80
 
-EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
