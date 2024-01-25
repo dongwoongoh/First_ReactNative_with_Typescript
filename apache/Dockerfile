@@ -1,13 +1,17 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
-LABEL maintainer "mad <integral5137@gmail.com>"
-LABEL version="0.1"
+LABEL maintainer="m24te28"
 WORKDIR /var/www/html
-RUN apt-get update
-RUN apt-get install apache2 -y
 
-ADD apache2.html /var/www/html/
-RUN ["/bin/bash","-c","echo init html content > new_apache.html"]
+RUN apt-get update && \
+    apt-get install -y -q curl gnupg2
+RUN curl http://nginx.org/keys/nginx_signing.key | apt-key add -
 
-EXPOSE 80/tcp
-CMD apachectl -DEFOREGROUND
+RUN apt-get update && \
+    apt-get install -y -q nginx
+
+ADD apache.html /var/www/html/
+
+EXPOSE 443 80
+
+CMD ["nginx", "-g", "daemon off;"]
